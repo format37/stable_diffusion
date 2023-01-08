@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 def main():
-    server_address = 'http://localhost:10000'
+    server_address = 'http://95.104.3.27:10000'
     logger.info('Checking for server to be ready..')
     r = ''
     while r == '':

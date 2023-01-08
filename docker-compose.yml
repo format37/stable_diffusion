@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  generator_stable_diffusion:
+  server:
     restart: always
     deploy:
       mode: replicated
@@ -15,11 +15,16 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
       - ./data:/app/data:rw
-    build: generator_stable_diffusion
+    build: server
     logging:
       options:
         max-size: "10m"
         max-file: "3"
+    ports:
+      - "10000:10000"
     environment:
       - TZ=Europe/Moscow
-      - HUGGINGFACE_USE_AUTH_TOKEN=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
+      # - HUGGINGFACE_USE_AUTH_TOKEN=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
+      # - MODEL_ID=CompVis/stable-diffusion-v1-4
+      - MODEL_ID=runwayml/stable-diffusion-v1-5
+      - PORT=10000
